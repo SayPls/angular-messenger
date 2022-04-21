@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angularmessenger-87e06": {
+      "hosting": {
+        "frontend": [
+          "angularmessenger-87e06"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angularmessenger-87e06"
+  }
+}
