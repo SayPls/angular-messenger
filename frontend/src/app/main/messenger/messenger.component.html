@@ -1,0 +1,74 @@
+
+<div class="wrapper">
+
+  <div class="header text">
+    <div class="contact-user">
+      <div class="username" *ngIf="currentChat.author">
+        <img class="avatar-sm" src="{{currentChat.author.avatar}}" alt="ava">
+        <span>{{currentChat.author.displayName}}</span>
+      </div>
+    </div>
+    <div class="logout">
+      <button class="btn btn-outline-primary" (click)="logout()">LogOut</button>
+    </div>
+
+  </div>
+
+  <div class="sidebar text">
+    <div class="top">
+      <div class="user-container">
+        <div class="user-container" *ngIf="authService.currentUser$ | async as data">
+          <img class="avatar-sm" src="{{data.photoURL}}" alt="ava">
+          <div class="username">
+            <span>{{data.displayName}}</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <input type="text" class="form-control"  placeholder="search" [(ngModel)]="name">
+      </div>
+    </div>
+    <div class="bottom" *ngIf="(chats | filter: name) as result">
+      <div *ngFor="let chat of result">
+        <div
+          class="author" type="button"
+          (click)="onChange(chat)"
+          [ngClass]="chat.id === currentChat.id ? 'click' : 'author'"
+          *ngFor="let mes of chatMes(chat) | slice: -1">
+          <div class="name-avatar">
+          <img class="avatar-sm" src="{{chat.author.avatar}}" alt="ava">
+          {{chat.author.displayName}}
+          </div>
+          <div class="date">
+            <div class="message">{{mes.value.slice(0,25)}}...</div>
+            <div class="message">{{mes.date | date: 'MM/dd/YY hh:mm'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main text">
+    <div class="cont" #scrollMe>
+      <div class="message">
+        <app-chat [chat]="currentChat"></app-chat>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer text">
+    <form [formGroup]="form">
+      <div class="d-flex justify-content-center align-items-md-center" *ngIf="currentChat.id">
+        <input
+          class="form-control message-container"
+          placeholder="write message"
+          formControlName="message"
+          (keydown.enter)="submitBtn.click()">
+        <div>
+        <button #submitBtn type="submit" class="btn btn-outline-primary" [disabled]="form.invalid" (click)="onSubmit()"><i class="fa-thin fa-paper-plane-top"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

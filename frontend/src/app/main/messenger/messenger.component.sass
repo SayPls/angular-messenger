@@ -1,0 +1,139 @@
+@import 'src/styles/variables'
+
+.wrapper
+  display: grid
+  grid-gap: 2px
+  grid-template-columns: repeat(9, 1fr)
+  grid-auto-rows: minmax(100px, auto)
+  grid-template-areas: "sd sd sd hd hd hd hd hd hd" "sd sd sd main main main main main main" "sd sd sd ft ft ft ft ft ft"
+  overflow-wrap: break-word
+  background-color: $background-panel-color-light
+
+.header
+  grid-area: hd
+  border: 1px solid $primary
+  border-radius: 10px
+
+.footer
+  grid-area: ft
+  border: 1px solid $primary
+  border-radius: 10px
+
+.main
+  grid-area: main
+  border: 1px solid $primary
+  border-radius: 10px
+  height: 584px
+  padding: 20px
+  .cont
+    border: 1px solid $secondary
+    border-radius: 10px
+    height: 100%
+    background-color: $background-panel-color
+    padding: 30px
+    overflow-y: scroll
+    overflow-wrap: anywhere
+
+.sidebar
+  grid-area: sd
+  border: 1px solid $primary
+  border-radius: 10px
+  padding: 20px
+  .top
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 10px
+    border: 1px solid $secondary
+    border-radius: 10px
+  .bottom
+    margin-top: 10px
+    padding: 10px
+    border: 1px solid $secondary
+    border-radius: 10px
+    height: 570px
+    background-color: $background-panel-color
+    overflow-y: auto
+    .author
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 15px
+      margin: 5px
+      border: 1px solid $primary
+      background-color: $background-panel-color-light
+      cursor: pointer
+      border-radius: 10px
+      .name-avatar
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        overflow: hidden
+      .date
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        max-width: 200px
+        font-size: 13px
+        border-radius: 10px
+        margin-left: 10px
+        overflow: hidden
+        .message
+          display: flex
+          justify-content: center
+          align-items: center
+          height: 20px
+          overflow: hidden
+      &:hover
+        background-color: $primary
+        color: $background-panel-color
+
+    .click
+      background-color: $primary
+      color: $background-panel-color
+
+
+
+.user-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-around
+  padding: 8px
+  .username
+    padding-left: 10px
+    color: $base-text-color
+    font-size: 20px
+    transition: all 0.3s
+
+.contact-user
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  padding: 27px
+  .username
+    padding-left: 10px
+    color: $base-text-color
+    font-size: 20px
+    transition: all 0.3s
+
+.footer-container
+  margin: 10px
+  border: 1px solid $secondary
+  border-radius: 10px
+  height: 78px
+
+.message-container
+  margin: 18px
+  min-height: 58px
+  width: 800px
+  resize: none
+  overflow-y: hidden
+
+
+.logout
+  position: absolute
+  top: 28px
+  right: 30px
