@@ -18,6 +18,8 @@
   grid-area: ft
   border: 1px solid $primary
   border-radius: 10px
+  button
+    border: none
 
 .main
   grid-area: main
@@ -47,6 +49,8 @@
     padding: 10px
     border: 1px solid $secondary
     border-radius: 10px
+    input
+      width: 250px
   .bottom
     margin-top: 10px
     padding: 10px
@@ -94,8 +98,6 @@
       background-color: $primary
       color: $background-panel-color
 
-
-
 .user-container
   display: flex
   flex-direction: column
@@ -103,9 +105,8 @@
   justify-content: space-around
   padding: 8px
   .username
-    padding-left: 10px
     color: $base-text-color
-    font-size: 20px
+    font-size: 18px
     transition: all 0.3s
 
 .contact-user
@@ -129,9 +130,6 @@
   margin: 18px
   min-height: 58px
   width: 800px
-  resize: none
-  overflow-y: hidden
-
 
 .logout
   position: absolute

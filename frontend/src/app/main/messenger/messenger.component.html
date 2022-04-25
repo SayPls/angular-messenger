@@ -11,7 +11,6 @@
     <div class="logout">
       <button class="btn btn-outline-primary" (click)="logout()">LogOut</button>
     </div>
-
   </div>
 
   <div class="sidebar text">
@@ -25,9 +24,10 @@
         </div>
       </div>
       <div>
-        <input type="text" class="form-control"  placeholder="search" [(ngModel)]="name">
+        <input type="text" class="form-control lg"  placeholder="search" [(ngModel)]="name">
       </div>
     </div>
+
     <div class="bottom" *ngIf="(chats | filter: name) as result">
       <div *ngFor="let chat of result">
         <div
@@ -41,7 +41,7 @@
           </div>
           <div class="date">
             <div class="message">{{mes.value.slice(0,25)}}...</div>
-            <div class="message">{{mes.date | date: 'MM/dd/YY hh:mm'}}</div>
+            <div class="message">{{mes.date | date: 'MM/dd/YYYY hh:mm'}}</div>
           </div>
         </div>
       </div>
@@ -65,7 +65,8 @@
           formControlName="message"
           (keydown.enter)="submitBtn.click()">
         <div>
-        <button #submitBtn type="submit" class="btn btn-outline-primary" [disabled]="form.invalid" (click)="onSubmit()"><i class="fa-thin fa-paper-plane-top"></i></button>
+        <button #submitBtn type="submit" class="btn btn-outline-primary" [disabled]="form.invalid" (click)="onSubmit()">
+          <i class="fa fa-paper-plane-o fa-lg" aria-hidden="true"></i></button>
         </div>
       </div>
     </form>

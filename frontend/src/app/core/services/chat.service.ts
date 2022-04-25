@@ -3,7 +3,7 @@ import {Message} from "../model/message";
 import {Chat} from "../model/chat";
 import {HttpClient} from "@angular/common/http";
 import { mergeMap, Subject, timer} from "rxjs";
-
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +38,6 @@ export class ChatService implements OnDestroy{
   }
 
   getFakeResp() {
-    return timer(10000).pipe(mergeMap(() => this.http.get<Message>('https://api.chucknorris.io/jokes/random')));
+    return timer(10000).pipe(mergeMap(() => this.http.get<Message>(environment.apiUrl)));
   }
-
-
 }
