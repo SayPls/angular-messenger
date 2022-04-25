@@ -39,9 +39,9 @@
           <img class="avatar-sm" src="{{chat.author.avatar}}" alt="ava">
           {{chat.author.displayName}}
           </div>
-          <div class="date">
-            <div class="message">{{mes.value.slice(0,25)}}...</div>
-            <div class="message">{{mes.date | date: 'MM/dd/YYYY hh:mm'}}</div>
+          <div class="last-message">
+            <div class="message-content">{{mes.value}}</div>
+            <div class="message-content">{{mes.date | date: 'MM/dd/YYYY hh:mm'}}</div>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
 
   <div class="footer text">
     <form [formGroup]="form">
-      <div class="d-flex justify-content-center align-items-md-center" *ngIf="currentChat.id">
+      <div class="footer-content" *ngIf="currentChat.id">
         <input
           class="form-control message-container"
           placeholder="write message"

@@ -1,23 +1,42 @@
 @import 'src/styles/variables'
 
-.wrapper
-  display: grid
-  grid-gap: 2px
-  grid-template-columns: repeat(9, 1fr)
-  grid-auto-rows: minmax(100px, auto)
-  grid-template-areas: "sd sd sd hd hd hd hd hd hd" "sd sd sd main main main main main main" "sd sd sd ft ft ft ft ft ft"
-  overflow-wrap: break-word
-  background-color: $background-panel-color-light
+@media ( min-width: 850px )
+  .wrapper
+    display: grid
+    grid-gap: 2px
+    grid-template-columns: repeat(10, 1fr)
+    grid-auto-rows: minmax(100px, auto)
+    grid-template-areas: "sd sd sd sd hd hd hd hd hd hd" "sd sd sd sd main main main main main main" "sd sd sd sd ft ft ft ft ft ft"
+    overflow-wrap: break-word
+    background-color: $background-panel-color-light
+
+@media screen and ( max-width: 850px )
+  .wrapper
+    background-color: $background-panel-color-light
 
 .header
   grid-area: hd
   border: 1px solid $primary
   border-radius: 10px
+  height: 100px
+  .logout
+    position: absolute
+    top: 28px
+    right: 30px
 
 .footer
   grid-area: ft
   border: 1px solid $primary
   border-radius: 10px
+  padding: 20px
+  .footer-content
+    display: flex
+    justify-content: space-around
+    align-items: center
+  .message-container
+    min-height: 58px
+    width: 900px
+    margin-right: 10px
   button
     border: none
 
@@ -63,7 +82,7 @@
       display: flex
       justify-content: space-between
       align-items: center
-      padding: 15px
+      padding: 10px
       margin: 5px
       border: 1px solid $primary
       background-color: $background-panel-color-light
@@ -73,23 +92,22 @@
         display: flex
         justify-content: flex-start
         align-items: center
-        overflow: hidden
-      .date
+        img
+          margin-right: 2px
+      .last-message
         display: flex
         flex-direction: column
-        justify-content: center
-        align-items: center
-        max-width: 200px
         font-size: 13px
         border-radius: 10px
         margin-left: 10px
         overflow: hidden
-        .message
+        .message-content
           display: flex
-          justify-content: center
-          align-items: center
-          height: 20px
+          justify-items: center
+          width: 150px
+          text-overflow: ellipsis
           overflow: hidden
+          white-space: nowrap
       &:hover
         background-color: $primary
         color: $background-panel-color
@@ -107,7 +125,7 @@
   .username
     color: $base-text-color
     font-size: 18px
-    transition: all 0.3s
+
 
 .contact-user
   display: flex
@@ -118,20 +136,3 @@
     padding-left: 10px
     color: $base-text-color
     font-size: 20px
-    transition: all 0.3s
-
-.footer-container
-  margin: 10px
-  border: 1px solid $secondary
-  border-radius: 10px
-  height: 78px
-
-.message-container
-  margin: 18px
-  min-height: 58px
-  width: 800px
-
-.logout
-  position: absolute
-  top: 28px
-  right: 30px

@@ -1,12 +1,21 @@
 @import 'src/styles/variables'
 
-.box
-  padding: 8px
-  margin: 10px
-  border: 1px solid $primary
-  background-color: $background-panel-color-light
-  border-radius: 20px
-  max-width: 500px
+.message
+  display: flex
+  flex-direction: column
+  align-items: center
+  .box-message
+    padding: 8px
+    margin: 10px
+    border: 1px solid $primary
+    background-color: $background-panel-color-light
+    border-radius: 20px
+    max-width: 350px
+    font-size: 13px
+  .box-date
+    font-size: 11px
+    color: $primary
+
 
 .author
   display: flex

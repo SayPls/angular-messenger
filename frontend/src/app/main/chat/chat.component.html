@@ -3,7 +3,9 @@
     <div *ngIf="chat.author.uid === mes.author.uid">
       <img class="avatar-sm" src="{{mes.author.avatar}}" alt="ava">
     </div>
-    <div class="box" id="message">{{mes.value}}</div>
-    <label class="col-form-label-sm" for="message">{{mes.date | date: 'MM/dd/YYYY hh:mm'}}</label>
+    <div class="message">
+      <div class="box-message">{{mes.value}}</div>
+      <div class="box-date">{{mes.date | date: 'MM/dd/YYYY hh:mm'}}</div>
+    </div>
   </div>
 </div>
