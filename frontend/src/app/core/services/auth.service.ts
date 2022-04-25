@@ -4,6 +4,7 @@ import {GoogleAuthProvider} from "firebase/auth"
 import {from} from "rxjs";
 import {Router} from "@angular/router";
 import {Chats} from "../../shared/helpers/chats";
+import {NotificationService} from "./notification.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,21 @@ export class AuthService {
 
   constructor(
     private auth: Auth,
-    private router: Router
+    private router: Router,
+    private notification: NotificationService
   ) {}
 
   signInWithGoogle() {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider())
       .then(() => this.router.navigate(['main'])
-        .then(() => localStorage.setItem('data', JSON.stringify(Chats)))
+        .then(() => {
+          localStorage.setItem('data', JSON.stringify(Chats));
+          this.notification.showSuccessMessage('You have successfully logged in', 'Welcome back!')
+        })
     ));
   }
 
   logOut() {
-    return from(signOut(this.auth).then(() => this.router.navigate(['login'])));
+    return from(signOut(this.auth).then(() => this.router.navigate([''])));
   }
 }

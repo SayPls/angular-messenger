@@ -5,7 +5,6 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FilterPipe } from './pipes/filter.pipe';
 
-
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,

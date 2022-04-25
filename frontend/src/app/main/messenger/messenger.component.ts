@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Message} from "../../core/model/message";
 import {ChatService} from "../../core/services/chat.service";
 import {Subject, takeUntil} from "rxjs";
+import {NotificationService} from "../../core/services/notification.service";
 
 @Component({
   selector: 'app-messenger',
@@ -21,7 +22,8 @@ export class MessengerComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   constructor(
     public authService: AuthService,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private notification: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -79,13 +81,21 @@ export class MessengerComponent implements OnInit, AfterViewChecked, OnDestroy {
   postFakeMassage() {
     let newMes = {author: this.currentChat.author, date: new Date()} as Message;
     let id = this.currentChat.id;
-    this.chatService.getFakeResp().pipe(takeUntil(this.destroy$)).subscribe((resp) => {
-      newMes.value = resp.value;
-      this.chatService.addMessage(id, newMes).then((resp) => {
-          this.currentChat.id === resp.id ? this.currentChat = resp : this.getChats();
+    this.chatService.getFakeResp()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next:(resp) => {
+          newMes.value = resp.value;
+          this.chatService.addMessage(id, newMes).then((resp) => {
+            if(this.currentChat.id === resp.id)
+                this.currentChat = resp;
+            this.getChats();
+            this.notification.showInfoMessage(resp.messages[resp.messages.length - 1].value ,resp.author.displayName);
         }
       )
-    });
+    },
+        error:() => this.notification.showErrorMessage('Something went wrong', 'Error')
+      });
   }
 
   chatMes(chat: Chat): Message[] {
