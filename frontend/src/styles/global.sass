@@ -1,0 +1,69 @@
+@import 'variables'
+
+body
+  margin: 0
+
+.text
+  color: #c6c8c9
+  font-weight: bold
+
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+.content
+  color: $base-text-color
+  padding: 20px
+  min-height: calc( 100vh - 110px )
+  height: auto
+
+a
+  text-decoration: none
+  color: $accent-text-color
+  &:hover
+    text-decoration: none
+    color: $primary
+
+.header-footer
+  background-color: $background-panel-color
+  height: 70px
+  display: flex
+  align-items: center
+
+.avatar-sm
+  min-width: 45px
+  max-width: 45px
+  height: 45px
+  border-radius: 50%
+  &.generic-avatar
+    background-color: $primary
+    color: $base-text-color
+    font-size: $h5-font-size
+    text-align: center
+    line-height: 45px
+
+::-webkit-scrollbar
+  width: 8px
+  height: 8px
+
+::-webkit-scrollbar-thumb
+  background-color: darken($primary, 5%)
+  border-bottom-right-radius: 10px
+  border-top-right-radius: 10px
+
+::-webkit-scrollbar-track-piece
+  background-color: lighten($background-panel-color, 5%)
+  border-bottom-right-radius: 10px
+  border-top-right-radius: 10px
+  border: 1px solid $secondary
+
+::-webkit-scrollbar-corner
+  background-color: lighten($background-panel-color, 5%)
+
+::-webkit-resizer
+  background-color: darken($primary, 5%)
+
+::-webkit-input-placeholder
+  text-align: center
+  text-decoration-color: $primary
