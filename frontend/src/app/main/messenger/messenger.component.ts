@@ -77,9 +77,11 @@ export class MessengerComponent implements OnInit, AfterViewChecked, OnDestroy {
     } as Message;
     this.currentChat.messages.push(message);
     this.currentChat.lastMessage = message.date;
-    this.chatService.createMessage(this.currentChat.id, this.currentChat).pipe(takeUntil(this.destroy$)).subscribe((resp) => {
-      this.getChats();
-      this.postFakeMassage(resp);
+    this.chatService.createMessage(this.currentChat.id, this.currentChat)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((resp) => {
+          this.getChats();
+          this.postFakeMassage(resp);
     })
     this.form.reset();
   }
