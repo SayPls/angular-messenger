@@ -47,7 +47,12 @@ export class MessengerComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   getChats() {
-    this.chatService.getChats().then((resp) => this.chats = resp);
+    this.chatService.getChatsServer().pipe(takeUntil(this.destroy$)).subscribe({
+      next:(resp) => {
+        this.chats = resp.sort((a, b) => new Date(b.lastMessage).getTime() - new Date(a.lastMessage).getTime());
+    },
+      error:() => this.notification.showErrorMessage('Something went wrong', 'Error')
+    })
   }
 
   onChange(chat: Chat) {
@@ -67,26 +72,29 @@ export class MessengerComponent implements OnInit, AfterViewChecked, OnDestroy {
   onSubmit() {
     let message = {
       value: this.form.get('message')?.value,
-      author: {uid: '11', displayName: 'I am'},
+      author: {uid: '1000', displayName: 'I am'},
       date: new Date()
     } as Message;
-    this.chatService.addMessage(this.currentChat.id, message).then((resp) => {
-      this.currentChat = resp
-      this.getChats();
-      this.postFakeMassage();
+    this.currentChat.messages.push(message);
+    this.currentChat.lastMessage = message.date;
+    this.chatService.createMessage(this.currentChat.id, this.currentChat)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((resp) => {
+          this.getChats();
+          this.postFakeMassage(resp);
     })
     this.form.reset();
   }
 
-  postFakeMassage() {
-    let newMes = {author: this.currentChat.author, date: new Date()} as Message;
-    let id = this.currentChat.id;
+
+  postFakeMassage(chatForMessage: Chat) {
     this.chatService.getFakeResp()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next:(resp) => {
-          newMes.value = resp.value;
-          this.chatService.addMessage(id, newMes).then((resp) => {
+          chatForMessage.messages.push({value: resp.value, author: chatForMessage.author, date: new Date} as Message)
+          chatForMessage.lastMessage = new Date();
+          this.chatService.createMessage(chatForMessage.id, chatForMessage).pipe(takeUntil(this.destroy$)).subscribe((resp) => {
             if(this.currentChat.id === resp.id)
                 this.currentChat = resp;
             this.getChats();
@@ -96,9 +104,5 @@ export class MessengerComponent implements OnInit, AfterViewChecked, OnDestroy {
     },
         error:() => this.notification.showErrorMessage('Something went wrong', 'Error')
       });
-  }
-
-  chatMes(chat: Chat): Message[] {
-    return chat.messages.filter(a => a.author.uid === chat.author.uid);
   }
 }

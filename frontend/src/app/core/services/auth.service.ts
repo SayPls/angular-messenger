@@ -3,7 +3,6 @@ import {Auth, authState, signInWithPopup, signOut} from "@angular/fire/auth";
 import {GoogleAuthProvider} from "firebase/auth"
 import {from} from "rxjs";
 import {Router} from "@angular/router";
-import {Chats} from "../../shared/helpers/chats";
 import {NotificationService} from "./notification.service";
 
 @Injectable({
@@ -22,10 +21,7 @@ export class AuthService {
   signInWithGoogle() {
     return from(signInWithPopup(this.auth, new GoogleAuthProvider())
       .then(() => this.router.navigate(['main'])
-        .then(() => {
-          localStorage.setItem('data', JSON.stringify(Chats));
-          this.notification.showSuccessMessage('You have successfully logged in', 'Welcome back!')
-        })
+        .then(() => this.notification.showSuccessMessage('You have successfully logged in', 'Welcome back!'))
     ));
   }
 

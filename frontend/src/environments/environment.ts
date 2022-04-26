@@ -13,6 +13,7 @@ export const environment = {
     measurementId: 'G-YNW3H8WCJ1',
   },
   apiUrl: 'https://api.chucknorris.io/jokes/random',
+  apiFakeUrl: 'https://database-for-my-messanger.herokuapp.com/chats',
   production: false
 };
 
