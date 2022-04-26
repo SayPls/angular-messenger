@@ -9,7 +9,7 @@
     grid-template-areas: "sd sd sd sd hd hd hd hd hd hd" "sd sd sd sd main main main main main main" "sd sd sd sd ft ft ft ft ft ft"
     overflow-wrap: break-word
     background-color: $background-panel-color-light
-    height: 100vh
+    height: calc(100vh - 10px)
 
 @media screen and ( max-width: 850px )
   .wrapper
@@ -19,21 +19,21 @@
 
 .header
   grid-area: hd
-  border: 1px solid $primary
-  border-radius: 10px
-  height: 100px
+  border: 0.1rem solid $primary
+  border-radius: $border-radius
+  height: 6rem
   img
     margin-right: 4px
   .logout
     position: absolute
-    top: 28px
-    right: 30px
+    top: 1.9rem
+    right: 2rem
 
 .footer
   grid-area: ft
-  border: 1px solid $primary
-  border-radius: 10px
-  padding: 20px
+  border: 0.1rem solid $primary
+  border-radius: $border-radius
+  padding: 1.5rem
   .footer-content
     display: flex
     justify-content: space-around
@@ -47,69 +47,65 @@
 
 .main
   grid-area: main
-  border: 1px solid $primary
-  border-radius: 10px
-  padding: 20px
-  overflow-y: auto
+  border: 0.1rem solid $primary
+  border-radius: $border-radius
+  padding: 1.5rem
   .cont
-    border: 1px solid $secondary
-    border-radius: 10px
+    border: 0.1rem solid $secondary
+    border-radius: $border-radius
     height: 100%
     background-color: $background-panel-color
-    padding: 30px
+    padding: 2rem
     overflow-y: scroll
     overflow-wrap: anywhere
 
 .sidebar
   grid-area: sd
-  border: 1px solid $primary
-  border-radius: 10px
-  padding: 20px
+  border: 0.1rem solid $primary
+  border-radius: $border-radius
+  padding: 1.5rem
   .top
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    padding: 10px
-    border: 1px solid $secondary
-    border-radius: 10px
+    padding: 1rem
+    border: 0.1rem solid $secondary
+    border-radius: $border-radius
     input
-      width: 250px
+      width: 15rem
   .bottom
-    margin-top: 10px
-    padding: 10px
-    border: 1px solid $secondary
-    border-radius: 10px
+    margin-top: 1rem
+    padding: 1rem
+    border: 0.1rem solid $secondary
+    border-radius: $border-radius
     background-color: $background-panel-color
-    height: calc(100vh - 216px)
+    height: calc(100vh - 16rem)
     overflow-y: auto
     .author
       display: flex
       justify-content: space-between
       align-items: center
-      padding: 10px
-      margin: 5px
-      border: 1px solid $primary
+      padding: 0.5rem
+      margin: 0.5rem
       background-color: $background-panel-color-light
       cursor: pointer
-      border-radius: 10px
+      border-radius: $border-radius
       .name-avatar
         display: flex
         justify-content: flex-start
         align-items: center
+        margin-right: 0.2rem
         img
-          margin-right: 4px
+          margin-right: 0.2rem
       .last-message
         display: flex
         flex-direction: column
-        font-size: 13px
-        border-radius: 10px
-        margin-left: 10px
+        font-size: $font-size-sm
         overflow: hidden
         .message-content
-          display: flex
           justify-items: center
-          width: 150px
+          width: 15rem
           text-overflow: ellipsis
           overflow: hidden
           white-space: nowrap
@@ -126,18 +122,12 @@
   flex-direction: column
   align-items: center
   justify-content: space-around
-  padding: 8px
-  .username
-    color: $base-text-color
-    font-size: 18px
-
+  padding: 0.5rem
+  font-size: $font-size-lg
 
 .contact-user
   display: flex
   justify-content: flex-start
   align-items: center
-  padding: 27px
-  .username
-    padding-left: 10px
-    color: $base-text-color
-    font-size: 20px
+  padding: 1.6rem
+  font-size: $font-size-lg

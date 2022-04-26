@@ -3,7 +3,7 @@
 
     <div class="header text">
       <div class="contact-user">
-        <div class="username" *ngIf="currentChat.author">
+        <div *ngIf="currentChat.author">
           <img class="avatar-sm" src="{{currentChat.author.avatar}}" alt="ava">
           <span>{{currentChat.author.displayName}}</span>
         </div>
