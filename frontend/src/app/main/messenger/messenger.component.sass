@@ -9,16 +9,20 @@
     grid-template-areas: "sd sd sd sd hd hd hd hd hd hd" "sd sd sd sd main main main main main main" "sd sd sd sd ft ft ft ft ft ft"
     overflow-wrap: break-word
     background-color: $background-panel-color-light
+    height: 100vh
 
 @media screen and ( max-width: 850px )
   .wrapper
     background-color: $background-panel-color-light
+    .main
+      height: 100vh
 
 .header
   grid-area: hd
   border: 1px solid $primary
   border-radius: 10px
-  height: 100px
+  img
+    margin-right: 4px
   .logout
     position: absolute
     top: 28px
@@ -44,8 +48,8 @@
   grid-area: main
   border: 1px solid $primary
   border-radius: 10px
-  height: 584px
   padding: 20px
+  overflow-y: auto
   .cont
     border: 1px solid $secondary
     border-radius: 10px
@@ -75,8 +79,8 @@
     padding: 10px
     border: 1px solid $secondary
     border-radius: 10px
-    height: 570px
     background-color: $background-panel-color
+    height: calc(100vh - 216px)
     overflow-y: auto
     .author
       display: flex
@@ -93,7 +97,7 @@
         justify-content: flex-start
         align-items: center
         img
-          margin-right: 2px
+          margin-right: 4px
       .last-message
         display: flex
         flex-direction: column

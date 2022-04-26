@@ -7,13 +7,8 @@ import {AuthService} from "../../core/services/auth.service";
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.sass']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
   @Input() chat!: Chat;
 
   constructor(public authService: AuthService) { }
-
-  ngOnInit(): void {
-
-  }
-
 }
