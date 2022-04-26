@@ -86,6 +86,7 @@ export class MessengerComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.form.reset();
   }
 
+
   postFakeMassage(chatForMessage: Chat) {
     this.chatService.getFakeResp()
       .pipe(takeUntil(this.destroy$))
