@@ -12,8 +12,8 @@ export const environment = {
     messagingSenderId: '532413619498',
     measurementId: 'G-YNW3H8WCJ1',
   },
-  apiUrl: 'https://api.chucknorris.io/jokes/random',
-  apiFakeUrl: 'https://database-for-my-messanger.herokuapp.com/chats',
+  apiFakeUrl: 'https://api.chucknorris.io/jokes/random',
+  apiUrl: 'https://database-for-my-messanger.herokuapp.com/chats',
   production: false
 };
 

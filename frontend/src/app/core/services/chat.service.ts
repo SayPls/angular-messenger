@@ -13,14 +13,14 @@ export class ChatService {
   constructor(private http: HttpClient) {}
 
   getChatsServer() {
-    return  this.http.get<Chat[]>(environment.apiFakeUrl);
+    return  this.http.get<Chat[]>(environment.apiUrl);
   }
 
   createMessage(id: number, chat: Chat) {
-    return this.http.put<Chat>(`${environment.apiFakeUrl}/${id}`, chat);
+    return this.http.put<Chat>(`${environment.apiUrl}/${id}`, chat);
   }
 
   getFakeResp() {
-    return timer(10000).pipe(mergeMap(() => this.http.get<Message>(environment.apiUrl)));
+    return timer(10000).pipe(mergeMap(() => this.http.get<Message>(environment.apiFakeUrl)));
   }
 }
