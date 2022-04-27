@@ -24,7 +24,7 @@
           </div>
         </div>
         <div>
-          <input type="text" class="form-control lg"  placeholder="search" [(ngModel)]="name">
+          <input type="text" class="form-control lg"  placeholder="Search a chat" [(ngModel)]="name">
         </div>
       </div>
 
@@ -61,7 +61,7 @@
         <div class="footer-content">
           <input
             class="form-control message-container"
-            placeholder="write message"
+            placeholder="Write a message"
             formControlName="message"
             (keydown.enter)="submitBtn.click()">
           <div>
